@@ -6,7 +6,7 @@ import {
   addContact,
   removeContacts,
   handlFiltration,
-} from 'redux/contactsReducer';
+} from '../redux/contactsReducer';
 
 export function App() {
   const contacts = useSelector(state => state.contacts.contacts);
