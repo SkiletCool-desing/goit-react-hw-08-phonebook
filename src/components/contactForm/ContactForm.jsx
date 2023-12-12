@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import css from './ContactForm.module.css';
+import css from '../contactForm/ContactForm.module.css';
 import { nanoid } from 'nanoid';
 
 export function ContactForm({ addContact }) {
