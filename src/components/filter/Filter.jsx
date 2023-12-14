@@ -1,5 +1,6 @@
 import React from 'react';
 import css from '../filter/Filter.module.css';
+
 export const Filter = ({ value, onChange }) => {
   return (
     <label htmlFor="filter">
