@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
-import css from '../contactForm/ContactForm.module.css';
-import { nanoid } from 'nanoid';
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import css from "../contactForm/ContactForm.module.css";
+import { nanoid } from "nanoid";
 
-export const ContactForm = ({ addContact }) => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+const addContact = (contactData) => ({
+  type: "ADD_CONTACT",
+  payload: contactData,
+});
 
-  const onInputChange = event => {
+export const ContactForm = () => {
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+
+  const dispatch = useDispatch(); 
+
+  const contacts = useSelector((state) => state.contacts)
+  // const value = useSelector(state => state.some.value);
+
+  const onInputChange = (event) => {
     const { name, value } = event.target;
     switch (name) {
-      case 'name':
+      case "name":
         setName(value);
         break;
-      case 'number':
+      case "number":
         setNumber(value);
         break;
       default:
@@ -20,18 +31,27 @@ export const ContactForm = ({ addContact }) => {
     }
   };
 
-  const onSubmit = event => {
+  const onSubmit = (event) => {
     event.preventDefault();
-
     const contactData = {
-      name: name,
-      number: number,
+      name,
+      number,
       id: nanoid(),
     };
 
-    addContact(contactData);
-    setName('');
-    setNumber('');
+    if (
+      contacts.some(
+        (contact) =>
+          contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      alert(`${name} вже є в контактах.`);
+      return;
+    }
+
+    dispatch(addContact(contactData)); 
+    setName("");
+    setNumber("");
   };
 
   return (
