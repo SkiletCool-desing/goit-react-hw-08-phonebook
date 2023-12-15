@@ -14,7 +14,7 @@ export const ContactForm = () => {
 
   const dispatch = useDispatch(); 
 
-  const contacts = useSelector((state) => state.contacts)
+  const contacts = useSelector((state) => state.contacts.contacts)
   // const value = useSelector(state => state.some.value);
 
   const onInputChange = (event) => {
