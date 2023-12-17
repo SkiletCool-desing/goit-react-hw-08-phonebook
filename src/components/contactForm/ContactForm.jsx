@@ -4,11 +4,6 @@ import css from "../contactForm/ContactForm.module.css";
 import { nanoid } from "nanoid";
 import { addContact } from '../../redux/contactsReducer';
 
-// const addContact = (contactData) => ({
-//   type: "ADD_CONTACT",
-//   payload: contactData,
-// });
-
 export const ContactForm = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -16,7 +11,6 @@ export const ContactForm = () => {
   const dispatch = useDispatch(); 
 
   const contacts = useSelector((state) => state.contacts.contacts)
-  // const value = useSelector(state => state.some.value);
 
   const onInputChange = (event) => {
     const { name, value } = event.target;
