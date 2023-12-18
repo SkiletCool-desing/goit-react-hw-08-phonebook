@@ -25,27 +25,29 @@ export const ContactForm = () => {
     }
   };
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    const contactData = {
-      name,
-      number,
-    };
+const onSubmit = (event) => {
+  event.preventDefault();
 
-    if (
-      contacts.some(
-        (contact) =>
-          contact.name.toLowerCase() === name.toLowerCase()
-      )
-    ) {
-      alert(`${name} вже є в контактах.`);
-      return;
-    }
+  if (
+    contacts &&
+    contacts.some(
+      (contact) =>
+        contact.name.toLowerCase() === name.toLowerCase()
+    )
+  ) {
+    alert(`${name} вже є в контактах.`);
+    return;
+  }
 
-    dispatch(addContact(contactData)); 
-    setName("");
-    setNumber("");
+  const contactData = {
+    name,
+    phone: number,
   };
+
+  dispatch(addContact(contactData));
+  setName("");
+  setNumber("");
+};
 
   return (
     <form onSubmit={onSubmit} className={css.contact_form}>

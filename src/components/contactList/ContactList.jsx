@@ -2,7 +2,7 @@ import React from 'react';
 import {useSelector } from "react-redux";
 
 export const ContactList = ({onDelit }) => {
-  const contacts = useSelector((state) => state.contacts.contacts);
+  const contacts = useSelector((state) => state.contacts.items);
   return (
     <ul>
       {contacts !== null &&
