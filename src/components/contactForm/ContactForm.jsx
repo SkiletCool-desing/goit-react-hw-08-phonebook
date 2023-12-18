@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import css from "../contactForm/ContactForm.module.css";
-import { nanoid } from "nanoid";
 import { addContact } from '../../redux/contactsReducer';
 
 export const ContactForm = () => {
@@ -31,7 +30,6 @@ export const ContactForm = () => {
     const contactData = {
       name,
       number,
-      id: nanoid(),
     };
 
     if (
