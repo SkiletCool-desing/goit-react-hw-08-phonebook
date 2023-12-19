@@ -1,12 +1,12 @@
-// import {
-//   reqestAddContact,
-//   reqestAllContacts,
-//   reqestDeleteContact,
-// } from '../service/APIservice';
+import {
+  reqestAddContact,
+  reqestAllContacts,
+  reqestDeleteContact,
+} from '../service/APIservice';
 
 import { createSlice,createAsyncThunk} from '@reduxjs/toolkit'
 
-import { fetchContacts, addContact, removeContacts } from '../redux/operations'
+import { fetchContacts, addContact, removeContacts } from './operations'
 
 const INITIAL_STATE = {
   contacts: {items: [], isLoading: false,

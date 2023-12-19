@@ -3,12 +3,8 @@ import { ContactForm } from '../components/contactForm/ContactForm';
 import { Filter } from '../components/filter/Filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { Blocks } from 'react-loader-spinner';
-import {
-  addContact,
-  removeContacts,
-  handlFiltration,
-  fetchContacts,
-} from '../redux/contactsReducer';
+import { addContact, removeContacts, fetchContacts, } from '../redux/operations';
+import {handlFiltration} from '../redux/contactsReducer'
 import { useEffect } from 'react';
 import {
   selectContacts,
