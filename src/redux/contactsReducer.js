@@ -3,8 +3,10 @@ import {
   reqestAllContacts,
   reqestDeleteContact,
 } from '../service/APIservice';
-import{ fetchContacts, addContact, removeContacts} from '../operations'
+
 import { createSlice,createAsyncThunk} from '@reduxjs/toolkit'
+
+import { fetchContacts, addContact, removeContacts } from '../redux/operations'
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',

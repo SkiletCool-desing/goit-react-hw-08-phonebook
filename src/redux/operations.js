@@ -4,7 +4,8 @@ import {
   reqestDeleteContact,
 } from '../service/APIservice';
 
-import { createAsyncThunk} from '@reduxjs/toolkit'
+import { createAsyncThunk } from '@reduxjs/toolkit'
+
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
