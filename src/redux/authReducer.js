@@ -6,7 +6,7 @@ import {
   setToken,
 } from 'service/APIservice';
 
-const { createSlice, createAsyncThunk, isAnyOf } = require('@reduxjs/toolkit');
+import { createSlice, createAsyncThunk, isAnyOf } from '@reduxjs/toolkit';
 
 export const registerThunk = createAsyncThunk(
   'auth/register',

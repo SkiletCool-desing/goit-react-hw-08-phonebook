@@ -46,18 +46,16 @@ export function App() {
     dispatch(handlFiltration(event.target.value));
   };
 
- const filteredContacts = () => {
+const filteredContacts = () => {
   const normalizedContacts = typeof filter === 'string' ? filter.toLocaleLowerCase() : '';
-  return contacts
+  return contacts && Array.isArray(contacts)
     ? contacts.filter(
         (contact) =>
           contact.name.toLocaleLowerCase().includes(normalizedContacts)
       )
     : [];
-};
-
-
-
+  };
+  
   const afterFiltration = filteredContacts();
 
   return (
