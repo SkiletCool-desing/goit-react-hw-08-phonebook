@@ -13,67 +13,39 @@ import {
   selectContactsIsLoading,
 } from '../redux/contact.selectors';
 
-export function App() {
+export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectContactsIsLoading);
-  const error = useSelector(selectContactsError);
-  const filter = useSelector(selectContactsFilter);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  const addContacts = contactData => {
-    if (
-      contacts.some(
-        contact =>
-          contact.name.toLocaleLowerCase() ===
-          contactData.name.toLocaleLowerCase()
-      )
-    ) {
-      alert(`${contactData.name} is already in contacts.`);
-      return;
-    }
-    dispatch(addContact(contactData));
-  };
-
-  const delitContacts = id => {
-    dispatch(removeContacts(id));
-  };
-
-  const Filtration = event => {
-    dispatch(handlFiltration(event.target.value));
-  };
-
-const filteredContacts = () => {
-  const normalizedContacts = typeof filter === 'string' ? filter.toLocaleLowerCase() : '';
-  return contacts && Array.isArray(contacts)
-    ? contacts.filter(
-        (contact) =>
-          contact.name.toLocaleLowerCase().includes(normalizedContacts)
-      )
-    : [];
-  };
-  
-  const afterFiltration = filteredContacts();
-
-  return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm addContact={addContacts} />
-      {error && window.alert(error)}
-      {isLoading && (
-        <Blocks
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="blocks-loading"
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
+          }
         />
-      )}
-      <h2>Contacts</h2>
-      <Filter value={filter} onChange={Filtration} />
-      <ContactList contacts={afterFiltration} onDelit={delitContacts} />
-    </div>
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<TasksPage />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
-}
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { registerThunk } from 'redux/authReducer';
+import { registerThunk } from '../../redux/authReducer';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();

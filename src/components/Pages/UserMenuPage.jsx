@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOutThunk } from 'redux/authReducer';
-import { selectAuthUtherData } from 'redux/authorization.selectors';
+import { logOutThunk } from '../../redux/authReducer';
+import { selectAuthUtherData } from '../../redux/authorization.selectors';
 import { FaUserCircle } from 'react-icons/fa';
 
 const UserMenu = () => {
