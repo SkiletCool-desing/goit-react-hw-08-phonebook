@@ -1,37 +1,20 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { selectAuthAuthenticated } from '../../redux/authorization.selectors';
+import { useAuth } from '../../hooks/useAuth';
+import css from './Navigation.module.css';
 
-const Navigation = () => {
-  const authenticated = useSelector(selectAuthAuthenticated);
+export const Navigation = () => {
+  const { isLoggedIn } = useAuth();
 
   return (
-    <header className="header">
-      <nav>
-        {authenticated ? (
-          <>
-            {' '}
-            <NavLink to={'/contacts'} className="header-link">
-              Contacts
-            </NavLink>
-            <NavLink to={'/'} className="header-link">
-              User
-            </NavLink>
-          </>
-        ) : (
-          <>
-            <NavLink to={'/login'} className="header-link">
-              LogIn
-            </NavLink>
-            <NavLink to={'/register'} className="header-link">
-              Register
-            </NavLink>
-          </>
-        )}
-      </nav>
-    </header>
+    <nav>
+      <NavLink className={css.link} to="/">
+        Home
+      </NavLink>
+      {isLoggedIn && (
+        <NavLink className={css.link} to="/tasks">
+          Tasks
+        </NavLink>
+      )}
+    </nav>
   );
 };
-
-export default Navigation;

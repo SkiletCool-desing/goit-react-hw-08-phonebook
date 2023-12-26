@@ -1,17 +1,16 @@
-import { ContactList } from '../components/contactList/ContactList';
-import { ContactForm } from '../components/contactForm/ContactForm';
-import { Filter } from '../components/filter/Filter';
-import { useDispatch, useSelector } from 'react-redux';
-import { Blocks } from 'react-loader-spinner';
-import { addContact, removeContacts, fetchContacts, } from '../redux/operations';
-import {handlFiltration} from '../redux/contactsReducer'
-import { useEffect } from 'react';
-import {
-  selectContacts,
-  selectContactsError,
-  selectContactsFilter,
-  selectContactsIsLoading,
-} from '../redux/contact.selectors';
+import { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from '../redux/auth/operations';
+import { useAuth } from '../hooks/useAuth';
+
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const TasksPage = lazy(() => import('../pages/Tasks'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,17 +29,17 @@ export const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />
+            <RestrictedRoute redirectTo="/tasks" component={<RegisterPage />} />
           }
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+            <RestrictedRoute redirectTo="/tasks" component={<LoginPage />} />
           }
         />
         <Route
-          path="/contacts"
+          path="/tasks"
           element={
             <PrivateRoute redirectTo="/login" component={<TasksPage />} />
           }
