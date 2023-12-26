@@ -5,3 +5,8 @@ export const selectAuthToken = state => state.authorization.token;
 export const selectAuthUtherData = state => state.authorization.user;
 export const selectAuthAuthenticated = state =>
   state.authorization.authenticated;
+
+
+export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+export const selectUser = state => state.auth.user;
+export const selectIsRefreshing = state => state.auth.isRefreshing;
