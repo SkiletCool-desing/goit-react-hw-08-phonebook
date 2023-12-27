@@ -2,17 +2,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 // import { contactsEditor } from '../components/ContactEditor/ContactEditor';
-import { contactsList as ContactList } from '../components/ContactList/ContactList';
+import { ContactList } from '../components/ContactList/ContactList';
 import { selectLoading } from '../redux/contact/selectors';
-
 export default function Contacts() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
-
   useEffect(() => {
     dispatch(fetchContactsEditor());
   }, [dispatch]);
-
   return (
     <>
       <Helmet>

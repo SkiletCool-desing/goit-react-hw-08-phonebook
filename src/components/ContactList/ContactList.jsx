@@ -3,9 +3,10 @@ import { Contacts } from '../Contacts/Contacts';
 import { selectAllContacts } from '../../redux/contact/selectors';
 import css from './ContactList.module.css';
 
-export const contactsList = () => {
+export const ContactList = () => {
   const contacts = useSelector(selectAllContacts);
-console.log(contacts)
+  console.log(contacts);
+
   return (
     <ul className={css.list}>
       {contacts.map(({ id, name, number }) => (
