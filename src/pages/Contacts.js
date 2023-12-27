@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { contactsList } from '../components/ContactList/ContactList';
-import { contactsEditor } from '../components/ContactEditor/ContactEditor';
+// import { contactsEditor } from '../components/ContactEditor/ContactEditor';
+import { contactsList as ContactList } from '../components/ContactList/ContactList';
 import { selectLoading } from '../redux/contact/selectors';
 
 export default function Contacts() {
@@ -20,7 +20,7 @@ export default function Contacts() {
       </Helmet>
       <contactsEditor />
       <div>{isLoading && 'Request in progress...'}</div>
-      <contactsList />
+      <ContactList />
     </>
   );
 }
