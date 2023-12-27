@@ -8,7 +8,7 @@ export default function Contacts() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
   useEffect(() => {
-    dispatch(fetchContactsEditor());
+    // dispatch(fetchContactsEditor());
   }, [dispatch]);
   return (
     <>
