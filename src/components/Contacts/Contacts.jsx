@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { deleteTask } from '../../redux/contact/operations';
+import { deleteContacts } from '../../redux/contact/operations';
 import css from './Contacts.module.css';
 
-export const Task = ({ id, name, number }) => {
+export const Contacts = ({ id, name, number }) => {
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteTask(id));
+  const handleDelete = () => dispatch(deleteContacts(id));
 
   return (
     <div className={css.wrapper}>
