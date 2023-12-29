@@ -8,7 +8,7 @@ export const Contacts = ({ id, name, number }) => {
 
   return (
     <div className={css.wrapper}>
-      <p className={css.text}>{name}</p>
+      <p className={css.text}>{name}</p> :
       <p className={css.text}>{number}</p>
       <button type="button" className={css.button} onClick={handleDelete}>
         Delete
