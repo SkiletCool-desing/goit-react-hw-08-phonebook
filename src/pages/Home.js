@@ -15,6 +15,7 @@ const styles = {
 export default function Home() {
   return (
     <div style={styles.container}>
+      Hello
     </div>
   );
 }

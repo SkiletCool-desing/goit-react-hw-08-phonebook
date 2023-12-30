@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { setFilter } from '../../redux/filterReducer';
+import { setFilter } from '../redux/filterReducer';
 export const Filter = () => {
     const dispatch = useDispatch();
     const handleChange = (event) => {
